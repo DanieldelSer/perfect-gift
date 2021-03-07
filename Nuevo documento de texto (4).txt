@@ -1,0 +1,179 @@
+    const showGuestEvents = dataGuest.map((eventGuest) => {
+        if (invite === eventGuest.state && invite === "Aceptar") {
+            return (
+                <item>
+                    <div className="tarjeta" key={eventGuest.eventName}>
+                        <Link to={`/Invitado/${eventGuest.eventName}`}>
+                            {/* /${eventGuest.user} */}
+                            <div className="cabecera">
+                                <div className="foto">
+                                    <FontAwesomeIcon icon={faMailBulk} size="3x" className="faPlus2" />
+                                </div>
+                                <div className="nombre">
+                                    <h1>Anfitrión: {eventGuest.user}</h1>
+                                </div>
+                            </div>
+                            <div className="texto">
+                                <h3 className="texto">{eventGuest.eventName}</h3>
+                                <p className="texto">Invitación: {eventGuest.state}</p>
+                            </div></Link>
+                    </div>
+                    <hr></hr>
+                </item>
+            );
+        } else if (invite === eventGuest.state && invite === "Rechazar") {
+            return (
+                <item>
+                    <div className="tarjetamsn" key={eventGuest.eventName}>
+
+                        <div className="cabecera">
+                            <div className="foto">
+                                <FontAwesomeIcon icon={faMailBulk} size="3x" className="faPlus2" />
+                            </div>
+                            <div className="nombre">
+                                <h1>Anfitrión: {eventGuest.user}</h1>
+                            </div>
+                        </div>
+                        <div className="texto">
+                            <h3 className="texto">{eventGuest.eventName}</h3>
+                            <p className="texto">Invitación: {eventGuest.state}</p>
+                        </div>
+                    </div>
+                    <hr></hr>
+                </item>
+            )
+        } else if (invite === eventGuest.state && invite === "Pendiente") {
+            return (
+                <item>
+                    <div className="tarjetamsn" key={eventGuest.eventName}>
+                        <div className="cabecera">
+                            <div className="foto">
+                                <FontAwesomeIcon icon={faMailBulk} size="3x" className="faPlus2" />
+                            </div>
+                            <div className="nombre">
+                                <h1>Anfitrión: {eventGuest.user}</h1>
+                            </div>
+                        </div>
+                        <div className="texto">
+                            <h3 className="texto">{eventGuest.eventName}</h3>
+                            <p className="texto">Invitación: {eventGuest.state}</p>
+                        </div>
+                        <div className="footer">
+                            <OverlayTrigger
+                                key='bottom'
+                                placement='bottom'
+                                overlay={
+                                    <Tooltip id={`tooltip-bottom`}>
+                                        <strong>Aceptar</strong>.
+                                        </Tooltip>
+                                }
+                            >
+                                <p variant="secondary"><FontAwesomeIcon icon={faUserCheck} size="2x" className="faPlus" onClick={() => decisionAlert(eventGuest._id, "Aceptar", eventGuest.user, "aceptado", eventGuest.eventName)} style={{ color: '#C0C0C0' }} /></p>
+                            </OverlayTrigger>
+                            <OverlayTrigger
+                                key='bottom'
+                                placement='bottom'
+                                overlay={
+                                    <Tooltip id={`tooltip-bottom`}>
+                                        <strong>Rechazar</strong>.
+                                        </Tooltip>
+                                }
+                            >
+                                <p variant="secondary"><FontAwesomeIcon icon={faUserTimes} size="2x" className="faPlus" onClick={() => decisionAlert(eventGuest._id, "Rechazar", eventGuest.user, "rechazado", eventGuest.eventName)} style={{ color: '#C0C0C0' }} /></p>
+                            </OverlayTrigger>
+                        </div>
+                    </div>
+                    <hr></hr>
+                </item>
+            );
+        } else if (invite ===  "Todas") {
+            if (eventGuest.state === "Pendiente") {
+                return (
+                    <item>
+                        <div className="tarjetamsn" key={eventGuest.eventName}>
+                            <div className="cabecera">
+                                <div className="foto">
+                                    <FontAwesomeIcon icon={faMailBulk} size="3x" className="faPlus2" />
+                                </div>
+                                <div className="nombre">
+                                    <h1>Anfitrión: {eventGuest.user}</h1>
+                                </div>
+                            </div>
+                            <div className="texto">
+                                <h3 className="texto">{eventGuest.eventName}</h3>
+                                <p className="texto">Invitación: {eventGuest.state}</p>
+                            </div>
+                            <div className="footer">
+                                <OverlayTrigger
+                                    key='bottom'
+                                    placement='bottom'
+                                    overlay={
+                                        <Tooltip id={`tooltip-bottom`}>
+                                            <strong>Aceptar</strong>.
+                                        </Tooltip>
+                                    }
+                                >
+                                    <p variant="secondary"><FontAwesomeIcon icon={faUserCheck} size="2x" className="faPlus" onClick={() => decisionAlert(eventGuest._id, "Aceptar", eventGuest.user, "aceptado", eventGuest.eventName)} style={{ color: '#C0C0C0' }} /></p>
+                                </OverlayTrigger>
+                                <OverlayTrigger
+                                    key='bottom'
+                                    placement='bottom'
+                                    overlay={
+                                        <Tooltip id={`tooltip-bottom`}>
+                                            <strong>Rechazar</strong>.
+                                        </Tooltip>
+                                    }
+                                >
+                                    <p variant="secondary"><FontAwesomeIcon icon={faUserTimes} size="2x" className="faPlus" onClick={() => decisionAlert(eventGuest._id, "Rechazar", eventGuest.user, "rechazado", eventGuest.eventName)} style={{ color: '#C0C0C0' }} /></p>
+                                </OverlayTrigger>
+                            </div>
+                        </div>
+                        <hr></hr>
+                    </item>
+                );
+            } else if (eventGuest.state === "Aceptar") {
+                return (
+                    <item>
+                        <div className="tarjeta" key={eventGuest.eventName}>
+                            <Link to={`/Invitado/${eventGuest.eventName}`}>
+                                {/* /${eventGuest.user} */}
+                                <div className="cabecera">
+                                    <div className="foto">
+                                        <FontAwesomeIcon icon={faMailBulk} size="3x" className="faPlus2" />
+                                    </div>
+                                    <div className="nombre">
+                                        <h1>Anfitrión: {eventGuest.user}</h1>
+                                    </div>
+                                </div>
+                                <div className="texto">
+                                    <h3 className="texto">{eventGuest.eventName}</h3>
+                                    <p className="texto">Invitación: {eventGuest.state}</p>
+                                </div></Link>
+                        </div>
+                        <hr></hr>
+                    </item>
+                );
+            } else {
+                return (
+                    <item>
+                        <div className="tarjetamsn" key={eventGuest.eventName}>
+
+                            <div className="cabecera">
+                                <div className="foto">
+                                    <FontAwesomeIcon icon={faMailBulk} size="3x" className="faPlus2" />
+                                </div>
+                                <div className="nombre">
+                                    <h1>Anfitrión: {eventGuest.user}</h1>
+                                </div>
+                            </div>
+                            <div className="texto">
+                                <h3 className="texto">{eventGuest.eventName}</h3>
+                                <p className="texto">Invitación: {eventGuest.state}</p>
+                            </div>
+                        </div>
+                        <hr></hr>
+                    </item>
+                )
+            };
+        }
+    });
